@@ -5,8 +5,26 @@ gem 'rails', '3.2.18'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 
+gem 'devise'
+gem 'cancan', '~> 1.6.10'
+gem 'haml-rails'
+gem 'high_voltage'
+gem 'carrierwave', '~> 0.9.0'
+gem "fog", "~> 1.3.1"
+gem 'make_flaggable', :git => 'git://github.com/ScottyGams/make_flaggable.git'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'geocoder'
+gem 'foursquare2'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

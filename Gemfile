@@ -5,8 +5,6 @@ gem 'rails', '3.2.18'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#database
-gem 'pg'
 
 #authorization & authentication
 gem 'devise'
@@ -34,7 +32,13 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'sqlite3' #database
 end
+
+group :production do
+  gem 'pg' #database
+end
+
 
 # Gems used only for assets and not required
 # in production environments by default.

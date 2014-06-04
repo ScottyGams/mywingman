@@ -5,19 +5,29 @@ gem 'rails', '3.2.18'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+#database
 gem 'pg'
 
+#authorization & authentication
 gem 'devise'
 gem 'cancan', '~> 1.6.10'
-gem 'haml-rails'
-gem 'high_voltage'
-gem 'carrierwave', '~> 0.9.0'
-gem "fog", "~> 1.3.1"
-gem 'make_flaggable', :git => 'git://github.com/ScottyGams/make_flaggable.git'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+#APIs to pull from
 gem 'geocoder'
 gem 'foursquare2'
+
+#design choices
+gem 'skeleton-rails'
+gem 'haml-rails'
+
+#various other gems (with justification)
+gem 'high_voltage' #about me page etc etc
+gem 'carrierwave', '~> 0.9.0' #uploading files, if I decide
+gem "fog", "~> 1.3.1" #for if images are uploaded to AWS
+gem 'make_flaggable', :git => 'git://github.com/ScottyGams/make_flaggable.git' #reporting users
+
 
 group :development, :test do
   gem 'pry-rails'

@@ -19,12 +19,14 @@ gem 'foursquare2'
 #design choices
 gem 'skeleton-rails'
 gem 'haml-rails'
+#may use create js for easy JS implimentation
 
 #various other gems (with justification)
 gem 'high_voltage' #about me page etc etc
 gem 'carrierwave', '~> 0.9.0' #uploading files, if I decide
 gem "fog", "~> 1.3.1" #for if images are uploaded to AWS
 gem 'make_flaggable', :git => 'git://github.com/ScottyGams/make_flaggable.git' #reporting users
+gem 'acts-as-taggable-on' #used for matching interests
 
 
 group :development, :test do

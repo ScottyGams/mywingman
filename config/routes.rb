@@ -1,6 +1,6 @@
 MyWingman::Application.routes.draw do
   
-root to: "home#index"
+root to: "users#index"
 
-  
+
 end

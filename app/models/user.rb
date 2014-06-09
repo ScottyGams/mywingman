@@ -5,21 +5,32 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :blurb, :image, :likes, :location, :name, :phone, :email, :password, :password_confirmation, :remember_me, :uid, :provider
+  attr_accessible :blurb, :image, :likes, :location, :name, :phone, :email, :password, :password_confirmation, :remember_me, :uid, :provider, :token
 
   def self.from_omniauth(auth)
       if user = User.find_by_email(auth.info.email)
         user.provider = auth.provider
         user.uid = auth.uid
+        user.token = auth.credentials.token
         user
       else
         where(auth.slice(:provider, :uid)).first_or_create do |user|
           user.provider = auth.provider
           user.uid = auth.uid
+          user.token = auth.credentials.token
           user.email = auth.info.email
-          user.profile_pic = auth.info.image
+          user.image = auth.info.image
           user.password = Devise.friendly_token[0,20]
       end
     end
   end
+
+  def graph
+    @graph ||= Koala::Facebook::API.new(self.token)
+  end
+
+  def fb_likes
+    @fb_likes ||= graph.get_connections 'me', 'likes'
+  end
+
 end

@@ -15,6 +15,7 @@ gem 'omniauth-facebook'
 #APIs to pull from
 gem 'geocoder'
 gem 'foursquare2'
+gem 'koala', "~> 1.10.0rc"
 
 #design choices
 gem 'skeleton-rails'

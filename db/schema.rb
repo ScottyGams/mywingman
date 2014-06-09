@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140609124705) do
+ActiveRecord::Schema.define(:version => 20140609132759) do
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20140609124705) do
     t.string   "last_sign_in_ip"
     t.string   "uid"
     t.string   "provider"
+    t.text     "token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

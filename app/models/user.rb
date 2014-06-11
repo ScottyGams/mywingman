@@ -36,12 +36,6 @@ class User < ActiveRecord::Base
     @fb_likes ||= graph.get_connections 'me', 'likes'
   end
 
-  
-  # u = User.find(1)
-  # u.interest_ids => [2, 1]
-  # user.liking(u.interest_ids).except(u.id)
-
-  # scope liking -> (interest_ids)
-  #   joins(:likes).where['like.interest_id in (?)', 'interest_ids']
+  scope :liking, ->(user) { joins(:likes).where('likes.interest_id in (?)', user.interest_ids).where("likes.user_id != ?", user.id) }
 
 end

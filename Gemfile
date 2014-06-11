@@ -5,6 +5,9 @@ gem 'rails', '3.2.18'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+#testing seed data
+gem 'fabrication'
+gem 'faker', '~> 1.3.0'
 
 #authorization & authentication
 gem 'devise'
@@ -35,11 +38,11 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'sqlite3' #database
+  gem 'sqlite3' #database for dev and testing
 end
 
 group :production do
-  gem 'pg' #database
+  gem 'pg' #database for production, it is needed by heroku
 end
 
 

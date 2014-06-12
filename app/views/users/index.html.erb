@@ -1,3 +1,9 @@
 <!-- <h1><= current_user.try.fb_likes ></h1> -->
 <h1>you are in</h1>
-<%= image_tag @user.image.url %>
+<%= image_tag current_user.image %>
+
+
+<%User.matches(current_user).each do |user|%>
+	<%= user.name %><br>
+	<%= user.attributes['likes_count'] %><br>
+<% end %>

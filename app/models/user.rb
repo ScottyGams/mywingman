@@ -41,5 +41,6 @@ class User < ActiveRecord::Base
   end
 
   scope :liking, ->(user) { joins(:likes).where('likes.interest_id in (?)', user.interest_ids).where("likes.user_id != ?", user.id) }
+  scope :matches, ->(user) { User.liking(user).select("*, count(likes.user_id) AS likes_count").group("users.id").order("likes_count DESC") }
 
 end

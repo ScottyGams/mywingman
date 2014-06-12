@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :interests, through: :likes
 
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,6 +11,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :blurb, :image, :likes, :location, :name, :phone, :email, :password, :password_confirmation, :remember_me, :uid, :provider, :token
+
+  mount_uploader :image, UserImageUploader
 
   def self.from_omniauth(auth)
       if user = User.find_by_email(auth.info.email)

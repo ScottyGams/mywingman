@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   scope :matches, ->(user) { User.liking(user).select("users.*, count(likes.user_id) AS likes_count").group("users.id").order("likes_count DESC") }
 
+  validates :penis, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -55,9 +56,9 @@ class User < ActiveRecord::Base
     (self.interests & user.interests).map(&:name).to_sentence
   end
 
-  def find_midpoint
-      my_location=Geokit::Geocoders::GoogleGeocoder.geocode 'current_user.location'
-      their_location=b=Geokit::Geocoders::GoogleGeocoder.geocode 'other_user.location'
+  def find_midpoint(user)
+      my_location=Geokit::Geocoders::GoogleGeocoder.geocode self.location
+      their_location=b=Geokit::Geocoders::GoogleGeocoder.geocode user.location
       midpoint=my_location.midpoint_to(their_location)
   end 
 

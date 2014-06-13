@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :interests, through: :likes
 
+  scope :liking, ->(user) { joins(:likes).where('likes.interest_id in (?)', user.interest_ids).where("likes.user_id != ?", user.id) }
+
+  scope :matches, ->(user) { User.liking(user).select("users.*, count(likes.user_id) AS likes_count").group("users.id").order("likes_count DESC") }
 
 
   # Include default devise modules. Others available are:
@@ -40,7 +43,16 @@ class User < ActiveRecord::Base
     @fb_likes ||= graph.get_connections 'me', 'likes'
   end
 
-  scope :liking, ->(user) { joins(:likes).where('likes.interest_id in (?)', user.interest_ids).where("likes.user_id != ?", user.id) }
-  scope :matches, ->(user) { User.liking(user).select("*, count(likes.user_id) AS likes_count").group("users.id").order("likes_count DESC") }
+  def matched_users
+    User.matches(self).includes(:interests)
+  end
+
+  def common_interests(user)
+    (self.interests & user.interests).map(&:name).to_sentence
+  end
+
+
+
+
 
 end

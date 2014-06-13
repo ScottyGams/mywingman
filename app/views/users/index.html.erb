@@ -3,7 +3,13 @@
 <%= image_tag current_user.image %>
 
 
-<%User.matches(current_user).each do |user|%>
-	<%= user.name %><br>
-	<%= user.attributes['likes_count'] %><br>
-<% end %>
+<ul>
+	<%current_user.matched_users.each do |user|%>
+		<li>
+			<%= user.name %>, 
+			<%= user.attributes['likes_count'] %>,
+			<%= user.common_interests(current_user) %>
+		</li>
+	<% end %>
+
+</ul>

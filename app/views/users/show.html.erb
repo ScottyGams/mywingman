@@ -1,7 +1,7 @@
-<% title 'My Profile' %>
+<h1>My Profile</h1>
 
 <p>Name: <%=h @user.name %></p>
-<p>Image: <%=h @user.image %></p>
+<p>Image: <%= image_tag @user.image %></p>
 
 <h2>Wingmen You Added</h2>
 <ul>

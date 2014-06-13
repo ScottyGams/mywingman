@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :likes
   has_many :interests, through: :likes
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   scope :liking, ->(user) { joins(:likes).where('likes.interest_id in (?)', user.interest_ids).where("likes.user_id != ?", user.id) }
 

@@ -17,6 +17,7 @@ gem 'omniauth-facebook'
 
 #APIs to pull from
 gem 'geocoder'
+gem 'geokit'
 gem 'foursquare2' #for location meetups
 gem 'koala', "~> 1.10.0rc" #for facebook graph
 

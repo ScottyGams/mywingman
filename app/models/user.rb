@@ -55,6 +55,11 @@ class User < ActiveRecord::Base
     (self.interests & user.interests).map(&:name).to_sentence
   end
 
+  def find_midpoint
+      my_location=Geokit::Geocoders::GoogleGeocoder.geocode 'current_user.location'
+      their_location=b=Geokit::Geocoders::GoogleGeocoder.geocode 'other_user.location'
+      midpoint=my_location.midpoint_to(their_location)
+  end 
 
 
 

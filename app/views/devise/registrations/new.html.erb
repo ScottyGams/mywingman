@@ -1,10 +1,10 @@
 <div class="container">
-  <div id="SignUp" class="eight columns"> 
   <h2>Sign up</h2>
+  <div id="SignUp" class="eight columns"> 
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
-    
+
     <div><%= f.label :name, "Name" %><br />
     <%= f.text_field :name %></div>
 
@@ -16,7 +16,8 @@
 
     <div><%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
+  </div>
+  <div id="SignUp" class="eight columns"> 
     <div><%= f.label :image, "Profile Picture" %><br />
     <%= f.file_field :image %></div>
 
@@ -33,10 +34,6 @@
   <% end %>
 
   <%= render "devise/shared/links" %>
-  </div>
-  <div id="SignIn" class="eight columns"> 
-    <h2>What is Wingman?</h2>
-    <p>Wingman is a web app that lets people make new freinds in new citys faster than the time it takes to order a beer. It doesn't matter if your current friends are being lame, you just moved to a new city, or you just want more people of like interest in your crew. Wingman links you with new peeps and recomends places to hang.</p>
   </div>
 </div>
  

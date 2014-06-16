@@ -19,6 +19,8 @@
 <ul>
   <% for user in @user.inverse_friends %>
     <li><%=h user.name %></li>
+    <li><%=h user.location %></li>
+    <li><%=h user.phone %></li>
   <% end %>
 </ul>
 

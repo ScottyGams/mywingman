@@ -60,7 +60,4 @@ class User < ActiveRecord::Base
       midpoint=my_location.midpoint_to(their_location)
   end 
 
-
-
-
 end

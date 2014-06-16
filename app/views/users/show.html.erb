@@ -18,9 +18,9 @@
 <h2>Wingmen Added You</h2>
 <ul>
   <% for user in @user.inverse_friends %>
-    <li><%=h user.name %></li>
-    <li><%=h user.location %></li>
-    <li><%=h user.phone %></li>
+    <li>Name: <%=h user.name %></li>
+    <li>Location: <%=h user.location %></li>
+    <li>Contact: <%=h user.phone %></li>
   <% end %>
 </ul>
 

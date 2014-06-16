@@ -1,7 +1,7 @@
 <!-- <h1><= current_user.try.fb_likes ></h1> -->
 <h1>you are in</h1>
 <%= image_tag current_user.image %>
-
+<%= link_to current_user.name, current_user%>
 
 <ul>
 	<%current_user.matched_users.each do |user|%>

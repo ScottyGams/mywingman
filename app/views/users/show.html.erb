@@ -21,6 +21,7 @@
     <li>Name: <%=h user.name %></li>
     <li>Location: <%=h user.location %></li>
     <li>Contact: <%=h user.phone %></li>
+    <li>Meetup: <%=h user.find_midpoint(user) %></li>
   <% end %>
 </ul>
 

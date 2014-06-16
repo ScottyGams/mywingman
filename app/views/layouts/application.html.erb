@@ -7,9 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class='login'>
+<div class="container">
+    <div class="two columns">
+      <img src='/apple-touch-icon-152x152.png'>
+    </div>
+     
+    <div class='login' class="fourteen columns">
       <% if current_user %>
-        <%= current_user.email %>
+        <%= current_user.name %>
+        <%= link_to "Wingman Profile", current_user %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "Sign In", new_user_session_path %>
@@ -18,6 +24,7 @@
         <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
       <% end %>
     </div>
+</div>
     <p class="notice"><%= notice%></p>
     <p class="alert"><%= alert%></p>
 

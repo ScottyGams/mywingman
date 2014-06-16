@@ -23,8 +23,6 @@ gem 'foursquare2' #for location meetups
 gem 'koala', "~> 1.10.0rc" #for facebook graph
 
 #design choices
-gem 'skeleton-rails'
-gem 'haml-rails'
 #may use create js for easy JS implimentation
 
 #various other gems (with justification)

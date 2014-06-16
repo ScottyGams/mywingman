@@ -16,12 +16,20 @@
 <p><%= link_to "See Wingmen", users_path %></p>
 
 <h2>Wingmen Added You</h2>
-<ul>
+<div>
   <% for user in @user.inverse_friends %>
-    <li>Name: <%=h user.name %></li>
-    <li>Location: <%=h user.location %></li>
-    <li>Contact: <%=h user.phone %></li>
-    <li>Meetup: <%= @clients.name  %></li>
+    <h3>Name: <%=h user.name %></h3>
+    <h4>Location: <%=h user.location %></h4>
+    <h4>Contact: <%=h user.phone %></h4>
+    <div>Meetup: 
+    	<p> Because of: <%= @clients[:interests].first %></p>
+    	<% @clients[:venues].each do |client| %>
+    	<h1><%= client.name %></h1>	
+    	<p><%= client.categories.first.name %></p>
+    	<p><%= client.stats.checkinsCount %>check ins</p>
+    	<% end %>
+    </div>
   <% end %>
-</ul>
+</div>
+
 

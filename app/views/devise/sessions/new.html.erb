@@ -1,17 +1,25 @@
-<h2>Sign in</h2>
+<div class="container">
+	<div id="SignIn" class="eight columns">	
+		<h2>Login to Wingman</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+		  <div><%= f.label :email %><br />
+		  <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+		  <div><%= f.label :password %><br />
+		    <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+		  <% if devise_mapping.rememberable? -%>
+		    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+		  <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+		  <div><%= f.submit "Sign in" %></div>
+		<% end %>
 
-<%= render "devise/shared/links" %>
+		<%= render "devise/shared/links" %>
+	</div>
+	<div id="SignIn" class="eight columns">	
+		<h2>What is Wingman?</h2>
+		<p>Wingman is a service that lets people make new freinds in new citys faster than the time it takes to order a beer. It doesn't matter if your friends are being lame, you just moved to a new city, or you just want more people of like interest in your crew. Wingman links you with new peeps and recomends places to hang.</p>
+	</div>
+</div>

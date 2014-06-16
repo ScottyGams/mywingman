@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def common_interests(user)
-    (self.interests & user.interests).map(&:name).to_sentence
+    (self.interests & user.interests).map(&:name)
   end
 
   def find_midpoint(user)

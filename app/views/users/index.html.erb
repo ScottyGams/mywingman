@@ -8,7 +8,7 @@
 		<li>
 			<%= user.name %>, 
 			<%= user.attributes['likes_count'] %>,
-			<%= user.common_interests(current_user) %>
+			<%= user.common_interests(current_user).to_sentence %>
 			<%= link_to "Add Wingman", friendships_path(:friend_id => user), :method => :post %>
 		</li>
 	<% end %>

@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-  end
+    @clients = get_user_interests @user
+   end
 
   def new
     @user = User.new
@@ -46,5 +46,13 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+  end
+
+private
+  def get_user_interests(user)
+    c = Client.new
+    interests = current_user.common_interests(user)
+    midpoint = current_user.find_midpoint(user)
+    c.search_venues_by_tip(:ll => [midpoint.lat, midpoint.lng].join(", "), :query => interests.first, :limit => 5)
   end
 end

@@ -1,35 +1,40 @@
-<h1>Wingman Profile</h1>
-<div>
-  <p>Name: <%=h @user.name %></p>
-  <p>Image: <%= image_tag @user.image %></p>
+<div class="container">
+  <div id="Profile" class="sixteen columns">
+    <h1>Wingman Profile</h1>
+    <p>Name: <%=h @user.name %></p>
+    <p>Image: <%= image_tag @user.image %></p>
+    <p><%= link_to "See Wingmen", users_path %></p>
+  </div>
+  <div id="YouAdded" class="eight columns"> 
+    <h2>Wingmen You Added</h2>
+    <ul>
+      <% @user.friendships.each do |friendship| %>
+        <li>
+          <%=h friendship.friend.name %>
+          (<%= link_to "remove", friendship, :method => :delete %>)
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  
+  <div id="TheyAdded" class="eight columns"> 
+    <h2>Wingmen Added You</h2>
+    <% @user.inverse_friends.each do |user| %>
+      <div class='gradientBoxesWithOuterShadows'>
+        <h3>Name: <%=h user.name %></h3>
+        <h4>Location: <%=h user.location %></h4>
+        <h4>Contact: <%=h user.phone %></h4>
+        <h4><%= image_tag @user.image %></h4>
+        <p>Meetup: </p>
+        <p> Because of: <%= @clients[:interests].first %></p>
+        <% @clients[:venues].each do |client| %>
+          <h4><%= client.name %></h4>	
+          <p><%= client.categories.first.name %></p>
+          <p><%= client.stats.checkinsCount %>check ins</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<h2>Wingmen You Added</h2>
-<ul>
-  <% for friendship in @user.friendships %>
-    <li>
-      <%=h friendship.friend.name %>
-      (<%= link_to "remove", friendship, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
-
-<p><%= link_to "See Wingmen", users_path %></p>
-
-<h2>Wingmen Added You</h2>
-<div>
-  <% for user in @user.inverse_friends %>
-    <h3>Name: <%=h user.name %></h3>
-    <h4>Location: <%=h user.location %></h4>
-    <h4>Contact: <%=h user.phone %></h4>
-    <div>Meetup: 
-    	<p> Because of: <%= @clients[:interests].first %></p>
-    	<% @clients[:venues].each do |client| %>
-    	<h1><%= client.name %></h1>	
-    	<p><%= client.categories.first.name %></p>
-    	<p><%= client.stats.checkinsCount %>check ins</p>
-    	<% end %>
-    </div>
-  <% end %>
-</div>
-
 

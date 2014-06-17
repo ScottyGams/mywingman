@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   scope :liking, ->(user) { joins(:likes).where('likes.interest_id in (?)', user.interest_ids).where("likes.user_id != ?", user.id) }
 
-  scope :matches, ->(user) { User.liking(user).select("users.*, count(likes.user_id) AS likes_count").group("users.id").order("likes_count DESC") }
+  scope :matches, ->(user) { User.liking(user).select("users.*, count(likes.user_id) AS likes_count").group("users.id").order("likes_count DESC").near([user.lat,user.lng],200) }
 
   geocoded_by :location, latitude: :lat, longitude: :lng
   after_validation :geocode

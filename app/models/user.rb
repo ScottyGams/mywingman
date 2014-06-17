@@ -10,13 +10,16 @@ class User < ActiveRecord::Base
 
   scope :matches, ->(user) { User.liking(user).select("users.*, count(likes.user_id) AS likes_count").group("users.id").order("likes_count DESC") }
 
+  geocoded_by :location, latitude: :lat, longitude: :lng
+  after_validation :geocode
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :blurb, :image, :likes, :location, :name, :phone, :email, :password, :password_confirmation, :remember_me, :uid, :provider, :token
+  attr_accessible :blurb, :image, :likes, :location, :name, :phone, :email, :lat, :lng, :password, :password_confirmation, :remember_me, :uid, :provider, :token
 
   mount_uploader :image, UserImageUploader
 

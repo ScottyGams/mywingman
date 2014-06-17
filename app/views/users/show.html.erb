@@ -1,8 +1,8 @@
-<h1>My Profile</h1>
-
-<p>Name: <%=h @user.name %></p>
-<p>Image: <%= image_tag @user.image %></p>
-
+<h1>Wingman Profile</h1>
+<div>
+  <p>Name: <%=h @user.name %></p>
+  <p>Image: <%= image_tag @user.image %></p>
+</div>
 <h2>Wingmen You Added</h2>
 <ul>
   <% for friendship in @user.friendships %>

@@ -2,7 +2,8 @@
   <div id="Profile" class="sixteen columns">
     <h1>Wingman Profile</h1>
     <p>Name: <%=h @user.name %></p>
-    <p>Image: <%= image_tag @user.image %></p>
+    <p>Image: <%= image_sized @user.image, "large" %></p>
+    <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
     <p><%= link_to "See Wingmen", users_path %></p>
   </div>
   <div id="YouAdded" class="eight columns"> 
@@ -23,15 +24,14 @@
     <% @user.inverse_friends.each do |user| %>
       <div class='gradientBoxesWithOuterShadows'>
         <h3>Name: <%=h user.name %></h3>
+        <h4><%= image_sized user.image, "large" %></h4>
         <h4>Location: <%=h user.location %></h4>
         <h4>Contact: <%=h user.phone %></h4>
-        <h4><%= image_tag @user.image %></h4>
-        <p>Meetup: </p>
-        <p> Because of: <%= @clients[:interests].first %></p>
+        <p>Discuss your common interest <%= @clients[:interests].first %> at </p>
         <% @clients[:venues].each do |client| %>
           <h4><%= client.name %></h4>	
           <p><%= client.categories.first.name %></p>
-          <p><%= client.stats.checkinsCount %>check ins</p>
+          <p><%= client.stats.checkinsCount %> check ins</p>
         <% end %>
       </div>
     <% end %>

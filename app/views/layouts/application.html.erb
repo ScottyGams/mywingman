@@ -11,7 +11,9 @@
   <p class="alert"><%= alert%></p>
   <div class="container">
       <div class="two columns">
-        <img src='/apple-touch-icon-76x76.png'>
+        <%= link_to root_url do %>
+          <%= image_tag "/apple-touch-icon-76x76.png" %>
+        <% end %>
       </div>
        
       <div id='nav' class="fourteen columns">

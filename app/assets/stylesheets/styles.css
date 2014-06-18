@@ -21,8 +21,13 @@
 }
 
 #headerImage img {
-    margin-bottom: 50px;
     max-width: 100%;
+    height: auto;
+}
+
+#wingmen {
+    max-width: 60%;
+    margin: 0 auto;
     height: auto;
 }
 

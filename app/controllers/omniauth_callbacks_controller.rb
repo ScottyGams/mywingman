@@ -3,6 +3,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
+
+      user.fb_likes.map{|l| l['name']}.each do |name|
+        user.interests << Interest.find_or_create_by_name(name)
+      end
+
       flash.notice = "Signed in Through Facebook!"
       sign_in_and_redirect user
     else

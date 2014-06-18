@@ -1,7 +1,7 @@
 module ApplicationHelper
   def image_sized(image_path, size)
     if size == "large"
-      actual_size = "300x300"
+      actual_size = "250x250"
     elsif size == "medium"
       acutual_size = "150x150"
     else

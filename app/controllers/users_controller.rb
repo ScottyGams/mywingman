@@ -51,10 +51,13 @@ class UsersController < ApplicationController
 
 private
   def get_user_interests(user)
-    c = Client.new
     interests = current_user.common_interests(user)
-    midpoint = current_user.find_midpoint(user)
-    response = c.search_venues_by_tip(:ll => [midpoint.lat, midpoint.lng].join(", "), :query => interests.first, :limit => 5)
-    {interests: interests, venues: response}
+    if midpoint = current_user.find_midpoint(user)
+      response = Client.new.search_venues_by_tip(:ll => [midpoint.lat, midpoint.lng].join(", "), :query => interests.first, :limit => 5)
+    else
+      response = nil
+    end
+
+    { interests: interests, venues: response }
   end
 end

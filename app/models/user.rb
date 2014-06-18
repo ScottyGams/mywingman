@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :blurb, :image, :likes, :location, :name, :phone, :email, :lat, :lng, :password, :password_confirmation, :remember_me, :uid, :provider, :token
+  attr_accessible :blurb, :image, :likes, :location, :name, :phone, :email, :lat, :lng, :password, :password_confirmation, :remember_me, :uid, :provider, :token, :current_password
 
   mount_uploader :image, UserImageUploader
 

@@ -1,6 +1,4 @@
 <!-- <h1><= current_user.try.fb_likes ></h1> -->
-<%= image_sized current_user.image, "large" %>
-<%= link_to current_user.name, current_user%>
 <div id='index' class="sixteen columns">
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Wrapper for slides -->
@@ -39,4 +37,7 @@
   			<%= button_to "Add Wingman", friendships_path(:friend_id => user), :method => :post %>
     </div>
   	<% end %>
+
+<%= image_sized current_user.image, "large" %>
+<%= link_to current_user.name, current_user%>
 

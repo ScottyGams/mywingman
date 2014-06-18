@@ -33,9 +33,12 @@ class User < ActiveRecord::Base
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
+        user.name = auth.extra.raw_info.name
         user.token = auth.credentials.token
         user.email = auth.info.email
         user.image = auth.info.image
+        user.blurb = auth.extra.raw_info.bio
+        user.location = (auth.extra.raw_info.location.name rescue nil)
         user.password = Devise.friendly_token[0,20]
       end
     end

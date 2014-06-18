@@ -27,17 +27,4 @@
     </a>
   </div>
 </div>
-  
-  	<%current_user.matched_users.each do |user|%>
-    <div class='gradientBoxesWithOuterShadows item'>
-  			<p><%= user.name %> &nbsp <%= image_sized user.image, "small" %> </p>
-        <p><%= user.blurb %></p>
-  			<p>Likes in Common: <%= user.attributes['likes_count'] %></p>
-  			<%= user.common_interests(current_user).to_sentence %>
-  			<%= button_to "Add Wingman", friendships_path(:friend_id => user), :method => :post %>
-    </div>
-  	<% end %>
-
-<%= image_sized current_user.image, "large" %>
-<%= link_to current_user.name, current_user%>
 

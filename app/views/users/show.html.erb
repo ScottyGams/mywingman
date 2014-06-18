@@ -1,8 +1,18 @@
 <div class="container">
   <div id="Profile" class="sixteen columns">
     <h1>Wingman Profile</h1>
-    <p>Name: <%=h @user.name %></p>
-    <p>Image: <%= image_sized @user.image, "large" %></p>
+    <div class='gradientBoxesWithOuterShadows'>
+      <p><%= image_sized @user.image, "large" %></p>
+      <h3><%=h @user.name %></h3>
+      <p><%=h @user.blurb %></p>
+      <p>Location: <%=h @user.location %></p>
+      <p>Contact: <%=h @user.phone %></p>
+      <p> Likes:
+        <% @user.interests.each do |user| %>
+        <%= user.name %>
+        <% end %> 
+      </p>
+    </div>
     <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
     <p><%= link_to "See Wingmen", users_path %></p>
   </div>

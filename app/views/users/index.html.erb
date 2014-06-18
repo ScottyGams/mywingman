@@ -1,16 +1,17 @@
 <!-- <h1><= current_user.try.fb_likes ></h1> -->
 <h1>you are in</h1>
-<%= image_tag current_user.image %>
+<%= image_sized current_user.image, "large" %>
 <%= link_to current_user.name, current_user%>
 
-<ul>
-	<%current_user.matched_users.each do |user|%>
-		<li>
-			<%= user.name %>, 
-			<%= user.attributes['likes_count'] %>,
-			<%= user.common_interests(current_user).to_sentence %>
-			<%= link_to "Add Wingman", friendships_path(:friend_id => user), :method => :post %>
-		</li>
-	<% end %>
-
-</ul>
+<div class='gradientBoxesWithOuterShadows'>
+  <ul>
+  	<%current_user.matched_users.each do |user|%>
+  		<li>
+  			<%= user.name %>, 
+  			<%= user.attributes['likes_count'] %>,
+  			<%= user.common_interests(current_user).to_sentence %>
+  			<%= link_to "Add Wingman", friendships_path(:friend_id => user), :method => :post %>
+  		</li>
+  	<% end %>
+  </ul>
+</div>

@@ -3,15 +3,14 @@
 <%= image_sized current_user.image, "large" %>
 <%= link_to current_user.name, current_user%>
 
-<div class='gradientBoxesWithOuterShadows'>
-  <ul>
+
+  
   	<%current_user.matched_users.each do |user|%>
-  		<li>
-  			<%= user.name %>, 
-  			<%= user.attributes['likes_count'] %>,
+    <div class='gradientBoxesWithOuterShadows'>
+  			<p><%= user.name %> &nbsp <%= image_sized user.image, "small" %> </p>
+        <p><%= user.blurb %></p>
+  			<p>Likes in Common: <%= user.attributes['likes_count'] %></p>
   			<%= user.common_interests(current_user).to_sentence %>
   			<%= link_to "Add Wingman", friendships_path(:friend_id => user), :method => :post %>
-  		</li>
+    </div>
   	<% end %>
-  </ul>
-</div>

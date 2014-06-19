@@ -11,8 +11,6 @@
           <%= user.common_interests(current_user).to_sentence %>
           <%= button_to "Add Wingman", friendships_path(:friend_id => user), :method => :post %>
             <div class="carousel-caption">
-            <h3><%= user.name %></h3>
-            <p><%= user.blurb %></p>
             </div>
           </div>
       <% end %>

@@ -40,7 +40,7 @@
         <p>Discuss your common interest <%= @clients[:interests].first %> at </p>
         <% @clients[:venues].each do |client| %>
           <h4><%= client.name %></h4>	
-          <p><%= client.categories.first.name %></p>
+          <p><%= (client.categories.first.name rescue nil) %></p>
           <p><%= client.stats.checkinsCount %> check ins</p>
         <% end %>
       </div>

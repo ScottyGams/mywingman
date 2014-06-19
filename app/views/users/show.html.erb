@@ -37,7 +37,7 @@
         <h4><%= image_sized user.image, "large" %></h4>
         <h4>Location: <%=h user.location %></h4>
         <h4>Contact: <%=h user.phone %></h4>
-        <p>Discuss your common interest <%= @clients[:interests].first %> at </p>
+        <p>Discuss your common interest <%= @clients[:interests].sample(1).to_s %> at </p>
         <% @clients[:venues].each do |client| %>
           <h4><%= client.name %></h4>	
           <p><%= (client.categories.first.name rescue nil) %></p>

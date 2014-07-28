@@ -4,12 +4,11 @@
  
 #nav {
     margin: 13px 0 0 0;
+    margin-bottom: 20px;
 }
  
 #nav ul li {
     display: inline;
-    margin: 0 25px 0 0;
-    margin-bottom: 130px;
 }
  
 #nav a {
